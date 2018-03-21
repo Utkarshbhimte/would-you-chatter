@@ -1,6 +1,16 @@
 {
+  "facebookScheme": "fb224342114810183",
   "expo": {
-    "sdkVersion": "25.0.0"
-  },
-  "facebookScheme": "fb224342114810183"
+    "name": "Would you rather",
+    "icon": "./src/images/logo.png",
+    "version": "1.0.0",
+    "slug": "would-you-chatter",
+    "sdkVersion": "25.0.0",
+    "ios": {
+      "bundleIdentifier": "com.utkarshbhimte.wouldyourather"
+    },
+    "android": {
+      "package": "com.utkarshbhimte.wouldyourather"
+    }
+  }
 }
