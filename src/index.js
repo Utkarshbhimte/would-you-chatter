@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 // Screens
 import LoginScreen from "./screens/LoginScreen";
 import ChatList from "./screens/ChatList";
+import ChatScreen from "./screens/ChatScreen";
 
 // Components
 import firebase from "firebase";
@@ -27,7 +28,7 @@ export default class App extends React.Component {
   _logout = () => auth.signOut();
 
   render() {
-    if (this.state.user) return <ChatList logOut={this._logout} />;
-    else return <LoginScreen login={this._login} />;
+    if (this.state.user) return <ChatScreen logOut={this._logout} />;
+    else return <LoginScreen user={this.state.user} login={this._login} />;
   }
 }
