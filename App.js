@@ -1,23 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
+import LoginScreen from "./src/screens/LoginScreen";
+import ChatList from "./src/screens/ChatList";
 
 export default class App extends React.Component {
+  state = {
+    user: null
+  };
+
+  _login = () => this.setState({ user: "Utkarsh Bhimte" });
+
+  _logout = () => this.setState({ user: null });
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+    if (this.state.user) return <ChatList logout={this._logout} />;
+    else return <LoginScreen login={this._login} />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
