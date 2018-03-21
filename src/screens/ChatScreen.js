@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
-
 import Screen from "../components/Screen";
 
-export default class ChatList extends Component {
+export default class ChatScreen extends Component {
   render() {
     return (
       <Screen>
-        <Text>You are now logged in!</Text>
-        <Button onPress={this.props.logOut} title="Log out" />
+        <Text>You are at ChatScreen</Text>
       </Screen>
     );
   }
