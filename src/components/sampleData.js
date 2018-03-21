@@ -19,7 +19,10 @@ export const messages = [
   },
   {
     type: "question",
-    options: ["die in a car crash", "die while drowning"],
+    options: [
+      "live your entire life in a virtual reality where all your wishes are granted",
+      "live in the real world"
+    ],
     sender: ""
   },
   {

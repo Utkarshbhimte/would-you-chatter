@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignContent: "center"
   },
   option: {
     flex: 1,
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     minHeight: 60
   },
   buttonText: {
-    color: "white"
+    color: "white",
+    textAlign: "center"
   }
 });

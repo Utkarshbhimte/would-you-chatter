@@ -38,8 +38,7 @@ export default class ChatScreen extends Component {
   };
   render() {
     return (
-      <Screen>
-        <StatusBar barStyle="light-content" />
+      <Screen title="Utkarsh" showStatusBar>
         <ScrollView style={styles.messageWrap}>
           {this.state.messages.map(this.renderBubble)}
         </ScrollView>
