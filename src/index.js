@@ -20,15 +20,14 @@ export default class App extends React.Component {
   componentDidMount = () => {
     auth.onAuthStateChanged(data => {
       user = data ? data.providerData[0] : null;
-      // if (data) console.log({ data });
       this.setState({ user });
     });
   };
 
   _logout = () => auth.signOut();
-
   render() {
-    if (this.state.user) return <ChatScreen logOut={this._logout} />;
+    if (this.state.user)
+      return <ChatScreen user={this.state.user} logOut={this._logout} />;
     else return <LoginScreen user={this.state.user} login={this._login} />;
   }
 }
