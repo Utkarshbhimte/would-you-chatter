@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,29 +11,44 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export default ({ messagesText, updateMessage, handleSubmit }) => {
-  return (
-    <View style={styles.inputWrap}>
-      <TouchableOpacity style={styles.triggerIcon}>
-        <Ionicons name="ios-add" size={30} color="black" />
-      </TouchableOpacity>
-      <TextInput
-        style={styles.input}
-        onChangeText={updateMessage}
-        value={messagesText}
-        placeholder="Type a message..."
-        autoCapitalize="none"
-        autoCorrect={true}
-        returnKeyType="send"
-        onSubmitEditing={handleSubmit}
-        blurOnSubmit={true}
-      />
-      <TouchableOpacity style={styles.triggerIcon} onPress={handleSubmit}>
-        <Ionicons name="ios-send-outline" size={30} color="black" />
-      </TouchableOpacity>
-    </View>
-  );
-};
+export default class ChatInput extends Component {
+  onSubmit = async () => {
+    await this.props.handleSubmit();
+    await this.props.scrollToInput(this.refs.input);
+  };
+  onFocus = () => {
+    this.props.scrollToInput(this.refs.input);
+  };
+  render() {
+    return (
+      <View style={styles.inputWrap}>
+        <TouchableOpacity
+          onPress={this.props.showQuestion}
+          style={styles.triggerIcon}
+        >
+          <Ionicons name="ios-add" size={30} color="black" />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          onChangeText={this.props.updateMessage}
+          value={this.props.messagesText}
+          blurOnSubmit={false}
+          placeholder="Type a message..."
+          autoCapitalize="none"
+          autoCorrect={true}
+          returnKeyType="send"
+          ref="input"
+          onSubmitEditing={this.onSubmit}
+          onLayout={this.props.onInputLayout}
+          onFocus={this.onFocus}
+        />
+        <TouchableOpacity style={styles.triggerIcon} onPress={this.onSubmit}>
+          <Ionicons name="ios-send-outline" size={30} color="black" />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   inputWrap: {
